@@ -4,7 +4,7 @@ Forked from [SimpleSimplex](https://github.com/keeganlow/SimpleSimplex)
 
 Added 2D objective functions support
 
-Rewritten in the ES6 module format as js class
+Rewritten in ES6 module format as js class
 
 Added objective function memoization, that reduce objFunc calls by ~6 times
 
@@ -19,7 +19,7 @@ import Simplex from '../src/NMSimplex'
 const s = new Simplex()
 ```
 
-Create objective function, that take an array of 2 numbers for 2D optimizatio or number for 1D optimization and return number
+Create objective function, that take an array of 2 numbers for 2D optimization or number for 1D optimization and return number
 
 ```js
 function objFunc (arr) {
@@ -49,7 +49,7 @@ const result = s.solve(
   [-354, 1153], // x0 - initial vertex
   1000, // number of iterations
   callback, // callback function
-  true
+  true // use memoization or not
 )
 // [[-0.2, 4], best vertex
 // 0, objFunc(x)
