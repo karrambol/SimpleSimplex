@@ -1,30 +1,27 @@
-import Simplex from '../src/NMSimplex.js';
+import Simplex from '../src/NMSimplex.js'
 
-function testFunc (arr) {
-    return ( (12*arr[0]+1) ** 2 +  (4*arr[1]-15) ** 2 );
-};
-
-// function that we are currently trying to minimize: 5(x^4) + 6x + 8
-function parabola(x) {
-    return 5 * x ** 4 + 6 * x + 8;
-  }
-  
-// objective function that Nelder Mead will seek to minimize by mutating the simplex
-function parabolicCost(x) {
-const residual = parabola(x); 
-return residual ** 2;
+const s = new Simplex()
+function objFunc (arr) {
+  return (5 * arr[0] + 1) ** 2 + (4 * arr[1] - 16) ** 2
 }
+const rez = []
+function callback (
+  itr, // number of iteration
+  x, // best vertex
+  obj, // best vertex objFunc(x)
+  centr, // centroid coordinates
+  action, // iteration action
+  objEvals // number of objFunc calls
+) {
+  rez.push([itr, x, obj, centr, action, objEvals])
+}
+const result = s.solve(
+  objFunc,
+  [-354, 1153], // x0 - initial vertex
+  1000, // number of iterations
+  callback, // callback function
+  false
+)
 
-let rez = [];
-const s = new Simplex;
-s.solve(testFunc, [-354,1153],100, function callback (itr,x) {
-    rez = x;
-})
 console.log(rez)
-console.log(rez[0] == -0.0835183894907809 && rez[1] == 3.749998916818134 )
-
-s.solve(parabolicCost, 100, 200, function callback (itr,x) {
-    rez = x;
-})
-console.log(rez)
-console.log(rez == -0.6694329465900719)
+console.log(result)
