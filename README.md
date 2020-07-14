@@ -48,8 +48,8 @@ const result = s.solve(
   objFunc,
   [-354, 1153], // x0 - initial vertex
   1000, // number of iterations
-  callback, // callback function
-  true // use memoization or not
+  callback, // callback function (optional)
+  true // use memoization (optional)
 )
 // [[-0.2, 4], best vertex
 // 0, objFunc(x)
