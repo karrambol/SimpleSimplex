@@ -2,7 +2,7 @@
 
 Forked from [SimpleSimplex](https://github.com/keeganlow/SimpleSimplex)
 
-Added 2D objective functions support
+Added 2D optimization support
 
 Rewritten in ES6 module format as js class
 
@@ -32,12 +32,12 @@ Optionally you can create callback function that solver will be call in the end 
 ```js
 const rez = []
 function callback (
-  itr, // number of iteration
-  x, // best vertex
-  obj, // best vertex objFunc(x)
-  centr, // centroid coordinates
-  action, // iteration action
-  objEvals // number of objFunc calls
+  itr, // number of iteration, umber
+  x, // best vertex, number or array of 2 numbers
+  obj, // objFunc(x), number
+  centr, // centroid coordinates, number or array of 2 numbers
+  action, // iteration action, string
+  objEvals // number of objFunc calls, number
 ) {
   rez.push([itr, x, obj, centr, action, objEvals])
 }
@@ -46,10 +46,10 @@ function callback (
 ```js
 const result = s.solve(
   objFunc,
-  [-354, 1153], // x0 - initial vertex
-  1000, // number of iterations
+  [-354, 1153], // x0 - initial vertex, number or array of 2 numbers
+  1000, // maximum number of iterations, number
   callback, // callback function (optional)
-  true // use memoization (optional)
+  true // use memoization (optional, default true), boolean
 )
 // [[-0.2, 4], best vertex
 // 0, objFunc(x)
