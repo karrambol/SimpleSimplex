@@ -1,4 +1,4 @@
-# Nelder-Mead simplex method implementation on js
+# [Nelder-Mead](https://en.wikipedia.org/wiki/Nelder–Mead_method) simplex method implementation on js
 
 Forked from [SimpleSimplex](https://github.com/keeganlow/SimpleSimplex)
 
