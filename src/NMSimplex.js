@@ -14,15 +14,15 @@ class Simplex {
 
   solve (objFuncIn, x0, numIters, callback, isMem = true) {
     const S = this
+    let objFuncEvaluationCount = 0
+    let objFunc
     if (!Array.isArray(x0)) {
       S.vertices = [x0, x0 + 1, x0 + 2]
     } else {
       S.vertices = [x0, [x0[0], x0[1] + 10], [x0[0] + 10, x0[1]]]
     }
-    const cache = {}
-    let objFuncEvaluationCount = 0
-    let objFunc
     if (isMem) {
+      const cache = {}
       objFunc = function memoizedObj (arg) {
         if (arg in cache) return cache[arg]
         objFuncEvaluationCount += 1
